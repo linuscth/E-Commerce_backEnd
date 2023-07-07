@@ -38,13 +38,15 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new tag
   try {
-    const newTagName = req.body;
-    // const checkTagName = await Tag.findOne({ where: { newTagName } });
-    // if (checkTagName) {
-    //   res.status(404).json({ message: 'tag already exist' })
-    // }
-    const createNewTagName = await Tag.create(newTagName);
-    res.status(200).json(createNewTagName);
+    const newTagName = req.body.tag_name;
+    console.log(newTagName);
+    const checkTagName = await Tag.findOne({ where: { tag_name: newTagName } });
+    if (checkTagName) {
+      return res.status(404).json({ message: 'tag already exist' })
+    } else {
+      const createNewTagName = await Tag.create({ tag_name: newTagName });
+      res.status(200).json(createNewTagName);
+    }
 
   } catch (error) {
     res.status(404).json(error)
