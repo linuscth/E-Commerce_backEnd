@@ -7,7 +7,6 @@ This is the back-end for an e-commerce site built using Express.js and Sequelize
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Video Walkthrough](#video-walkthrough)
 - [Urls](#urls)
 
 ## Installation
