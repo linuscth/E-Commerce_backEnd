@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
     }
 
   } catch (error) {
-    res.status(404).json(error)
+    res.status(500).json(error)
   }
 });
 
@@ -79,9 +79,9 @@ router.delete('/:id', async (req, res) => {
       where: { id: targetId }
     })
     if (!destroyId) {
-      res.status(404).json({ message: 'No Tag found with this id!' })
+      return res.status(404).json({ message: 'No Tag found with this id!' })
     }
-    res.status(200).json(destroyId);
+    res.status(200).json({ message: 'input tag has been deleted' });
   } catch (error) {
     res.status(500).json(error)
   }
